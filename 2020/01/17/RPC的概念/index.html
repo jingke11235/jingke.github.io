@@ -46,27 +46,35 @@
   };
 </script>
 
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Apollo">
-<meta property="og:url" content="http://yoursite.com/index.html">
+  <meta name="description" content="前言​    写文章的目的是分享思维，也是分享思维过程，因此文章可能会很啰嗦而且某些地方缺乏逻辑，这可能是因为作者本身的思维过程导致的，但是作者希望在阅读文章的过程中读者可以感受并且跟随作者的思维逻辑，来真正想明白一个技术，一个概念。中间可能会涉及一些技术细节，但是必然是浅显易懂的。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="RPC概念">
+<meta property="og:url" content="http://yoursite.com/2020/01/17/RPC%E7%9A%84%E6%A6%82%E5%BF%B5/index.html">
 <meta property="og:site_name" content="Apollo">
+<meta property="og:description" content="前言​    写文章的目的是分享思维，也是分享思维过程，因此文章可能会很啰嗦而且某些地方缺乏逻辑，这可能是因为作者本身的思维过程导致的，但是作者希望在阅读文章的过程中读者可以感受并且跟随作者的思维逻辑，来真正想明白一个技术，一个概念。中间可能会涉及一些技术细节，但是必然是浅显易懂的。">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://yoursite.com/2020/01/17/RPC%E7%9A%84%E6%A6%82%E5%BF%B5/pic1.png">
+<meta property="og:image" content="http://yoursite.com/2020/01/17/RPC%E7%9A%84%E6%A6%82%E5%BF%B5/pic2.png">
+<meta property="article:published_time" content="2020-01-17T13:13:50.990Z">
+<meta property="article:modified_time" content="2020-01-17T13:25:56.932Z">
 <meta property="article:author" content="Apollo">
+<meta property="article:tag" content="RPC">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://yoursite.com/2020/01/17/RPC%E7%9A%84%E6%A6%82%E5%BF%B5/pic1.png">
 
-<link rel="canonical" href="http://yoursite.com/">
+<link rel="canonical" href="http://yoursite.com/2020/01/17/RPC%E7%9A%84%E6%A6%82%E5%BF%B5/">
 
 
 <script id="page-configurations">
   // https://hexo.io/docs/variables.html
   CONFIG.page = {
     sidebar: "",
-    isHome: true,
-    isPost: false
+    isHome: false,
+    isPost: true
   };
 </script>
 
-  <title>Apollo</title>
+  <title>RPC概念 | Apollo</title>
   
 
 
@@ -171,10 +179,10 @@
             
 
   <div class="posts-expand">
-        
+      
   
   
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/01/17/RPC%E7%9A%84%E6%A6%82%E5%BF%B5/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -188,8 +196,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/01/17/RPC%E7%9A%84%E6%A6%82%E5%BF%B5/" class="post-title-link" itemprop="url">RPC概念</a>
+          RPC概念
         </h1>
 
         <div class="post-meta">
@@ -214,33 +221,47 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>​    写文章的目的是分享思维，也是分享思维过程，因此文章可能会很啰嗦而且某些地方缺乏逻辑，这可能是因为作者本身的思维过程导致的，但是作者希望在阅读文章的过程中读者可以感受并且跟随作者的思维逻辑，来真正想明白一个技术，一个概念。中间可能会涉及一些技术细节，但是必然是浅显易懂的。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020/01/17/RPC%E7%9A%84%E6%A6%82%E5%BF%B5/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
+        <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>​    写文章的目的是分享思维，也是分享思维过程，因此文章可能会很啰嗦而且某些地方缺乏逻辑，这可能是因为作者本身的思维过程导致的，但是作者希望在阅读文章的过程中读者可以感受并且跟随作者的思维逻辑，来真正想明白一个技术，一个概念。中间可能会涉及一些技术细节，但是必然是浅显易懂的。</p>
+<a id="more"></a>
+
+<h3 id="RPC的概念"><a href="#RPC的概念" class="headerlink" title="RPC的概念"></a>RPC的概念</h3><h4 id="通俗化的理解方式"><a href="#通俗化的理解方式" class="headerlink" title="通俗化的理解方式"></a>通俗化的理解方式</h4><p>​    RPC的全称为<strong>Remote Procedure Call</strong>，翻译成中文为远程过程调用。<em>这是啥？为什么要提这个东西？为什么要从这个东西开始？</em>实际上，需要思考的一个问题是：当你打开任意一个网页，在页面上显示出的一系列信息是怎么出现在你的电脑上的？你的电脑中是不存在这些东西的，那么这些东西从哪儿来的呢？一个简单的认知是从服务提供方而来，例如我打开百度搜索美少女，百度替我搜索了美少女并且在网页上将和美少女有关的信息呈现给我。所以广义上来说你在网页上进行的一切操作都是RPC，当然这个说法有失准确性，所以为了给读者一个比较直观的印象，文章用下面的例子进行说明：</p>
+<p>​    用户A开发出了一个功能叫做魔镜，功能很简单，A问魔镜我是这个世界上最漂亮的女人，魔镜就会回答ta，而这个时候用户B也希望问一问魔镜，怎么办呢？于是用户A将魔镜搞成了一个可下载的东西，然后发给了B，B就可以在自己的电脑上运行并且问魔镜了。可是用户C就很懒，他表示我怎么能啥都不干就能直接问魔镜呢？于是用户A就搞了一个东西出来，说你们不用再下载了，在你们的电脑上就可以直接问魔镜了，魔镜在我的电脑里，你们把问题告诉我，我把答案告诉你们。这就是<strong>RPC</strong>，提出问题和回答问题被网络分割开了。</p>
+<p>​    稍稍专业一点的说法为：两个物理分离的系统需要建立逻辑上的互联关系时，RPC为他们牵线搭桥。</p>
+<p><img src="/2020/01/17/RPC%E7%9A%84%E6%A6%82%E5%BF%B5/pic1.png" alt="pic1"></p>
+<h4 id="分布式"><a href="#分布式" class="headerlink" title="分布式"></a>分布式</h4><p>​    而RPC的诞生和<strong>分布式</strong>息息相关，所以文章会简单介绍一下分布式环境下的服务方式。</p>
+<p>​    我们继续上面的例子，魔镜服务越做越大，用户越来越多，所以开发者A的压力越来越大，因为魔镜有一次崩溃了5min，在这5min内所有的用户都没办法用魔镜了，于是收到了一大堆投诉信。同时A想给魔镜装点新功能，比如过年了回答完问题后还会说一句新年好，但是A需要先把魔镜功能停掉然后更新完再启动，这个时间里也收到了一大堆投诉。而A希望魔镜可以稳定运行，不要时不时地崩溃，同时我想更新的时候也不至于要先把魔镜停掉，而是保持魔镜一直可用。由此就产生了<strong>分布式</strong>的服务治理方式，可以用一张图来表达一下：</p>
+<p><img src="/2020/01/17/RPC%E7%9A%84%E6%A6%82%E5%BF%B5/pic2.png" alt="pic2"><br>​    于是A想了一个办法，那就是造出好多好多魔镜，但是用户对此是没有感知的，用户的调用方式维持一致，即向魔镜提出问题，魔镜给予回答。而在问题被送到A这里的时候呢，选择其中一个魔镜进行回答就ok了，这也可以完美地解决上文提出的两个问题，即更新问题和单个节点损坏问题。然而分布式却带来了其他的问题，针对这些问题，本文会具象化地进行简单描述，但不会给出解决方案。</p>
+<ul>
+<li>负载均衡：假设A现在搭建了10个魔镜，在这里由于功能完全一致，我们将其称为<strong>实例</strong>，理想状态下每个魔镜应该收到数量均衡的请求，这样可以保证不会因为某个魔镜请求太多而挂掉。而当一个请求到达A的时候，将这个请求分配给哪一个实例才能保证尽量均衡就变成了一个问题。</li>
+<li>服务发现：A发现10个魔镜不够用了，于是又搞了一个魔镜出来，但是用户不知道你又搞了一个出来，所以这个时候就需要告诉用户我又搞了一个出来，你们可以使用新的魔镜了。这个过程就是服务注册和服务发现的过程，也就是告知。比较著名的服务注册中心为<strong>Dubbo</strong>中使用的<strong>Zookeeper</strong>，名字简单易懂，动物园管理员。</li>
+</ul>
+<p>上面的两个问题是分布式环境下必须要解决的问题，而另外一些问题则是一个高效、优秀的RPC框架需要关注的效率以及性能问题，因此在概念理解中不进行阐述。</p>
+<h3 id="HTTP与RPC"><a href="#HTTP与RPC" class="headerlink" title="HTTP与RPC"></a>HTTP与RPC</h3><p>​    回到最开始的问题，既然我向百度查询美少女这个行为实际上也是RPC，那么为什么RPC这个概念并没有被大众熟知呢，反而是HTTP这个词说起来谁都知道。</p>
+<p>​    在一个企业和另一个企业通信过程中，两方所使用的东西往往都是不同的，所以用一套大家都比较承认的交流方式就相对高效，这就是HTTP，而在企业内部，大家就需要追求内部调用的高效性，所以往往使用特定协议支持的RPC框架。</p>
+
     </div>
 
     
     
     
+
       <footer class="post-footer">
-        <div class="post-eof"></div>
+          <div class="post-tags">
+              <a href="/tags/RPC/" rel="tag"># RPC</a>
+          </div>
+
+        
+
+
+        
       </footer>
+    
   </article>
   
   
   
 
   </div>
-
-  
-
 
 
           </div>
@@ -291,6 +312,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#RPC的概念"><span class="nav-number">2.</span> <span class="nav-text">RPC的概念</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#通俗化的理解方式"><span class="nav-number">2.1.</span> <span class="nav-text">通俗化的理解方式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#分布式"><span class="nav-number">2.2.</span> <span class="nav-text">分布式</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HTTP与RPC"><span class="nav-number">3.</span> <span class="nav-text">HTTP与RPC</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
